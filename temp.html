@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Conversor de temperatura</title>
+</head>
+
+<body>
+
+  <h1 class="title">Conversor de temperatura</h1>
+
+  <form class="cajaForm" id="tempForm">
+    <label class="txtIngresar" for="celsiusInput">Ingrese la temperatura en Celsius:</label>
+    <input class="inputIngresar" type="number" id="celsiusInput" name="celsius" required>
+    <button class="btnIngresar" type="button" onclick="convertTemperature()">Convertir</button>
+  </form>
+
+  <div class="cajaResultados" id="results">
+    <h2 class="titleResultados" >Resultados</h2>
+    <p class="farResultados" id="fahrenheitResult"></p>
+    <p class="kelvinResultados" id="kelvinResult"></p>
+  </div>
+
+  <script>
+    function convertTemperature() {
+      const celsiusInput = document.getElementById('celsiusInput').value;
+
+      if (isNaN(celsiusInput)) {
+        alert('Error: Ingrese un valor numérico para Celsius.');
+        return;
+      }
+
+      const celsius = parseFloat(celsiusInput);
+      const fahrenheit = (celsius * 9/5) + 32;
+      const kelvin = celsius + 273.15;
+
+      document.getElementById('fahrenheitResult').textContent = `Grados Fahrenheit: ${fahrenheit.toFixed(2)}`;
+      document.getElementById('kelvinResult').textContent = `Grados Kelvin: ${kelvin.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
